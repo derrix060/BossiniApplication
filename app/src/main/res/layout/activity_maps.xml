@@ -1,0 +1,104 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_alignParentBottom="true">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_alignBottom="@+id/btTakePicture"
+        android:layout_alignTop="@+id/btChangeName" />
+
+    <Button
+        android:id="@+id/btChangeName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:text= "@string/btName"/>
+
+    <Button
+        android:id="@+id/btTakePicture"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btChangeName"
+        android:layout_below="@+id/btChangeName"
+        android:layout_marginTop="20dp"
+        android:text="@string/btPicture" />
+
+    <TextView
+        android:id="@+id/txtWelcome"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="20dp"
+        android:text="@string/welcomeText"
+        android:textAlignment="center" />
+
+
+    <Button
+        android:id="@+id/btStart"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btStart"
+        android:layout_below="@+id/txtWelcome"
+        android:layout_alignParentStart="true" />
+
+
+    <fragment
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        tools:context="br.com.bossini.realizacheckin.MapsActivity"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/txtQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btStart"
+        android:layout_marginTop="11dp"
+        />
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtQuestion"
+        android:layout_marginTop="13dp"
+        />
+
+    <TextView
+        android:id="@+id/txtAnswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/question"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/txtAnswer"
+        android:layout_alignParentStart="true" />
+
+
+
+
+</RelativeLayout>
