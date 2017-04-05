@@ -28,6 +28,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final int CAMERA_REQUEST = 1;
     private ImageView imageView;
 
+    int i=0;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,15 +48,52 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         TextView txtAnswer = (TextView) findViewById(R.id.txtAnswer);
         txtAnswer.setText(getString(R.string.txtAsnwer));
 
-        TextView txtQuestion1 = (TextView) findViewById(R.id.question);
-        txtQuestion1.setText(getString(R.string.question1));
 
-        TextView txtAnswer1 = (TextView) findViewById(R.id.answer);
-        txtAnswer1.setText(getString(R.string.answer1));
+        final EditText editableField = (EditText) findViewById(R.id.answer);
+        editableField.setVisibility(View.INVISIBLE);
 
         whenClickOnChangeName();
 
         whenClickOnTakePicture();
+
+        final Button btOk = (Button) findViewById(R.id.btOk);
+
+        final String[] questions = getResources().getStringArray(R.array.questions);
+
+        final Button btStart = (Button) findViewById(R.id.btStart);
+
+        btStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                TextView question = (TextView) findViewById(R.id.question);
+
+                editableField.setVisibility(View.VISIBLE);
+
+                for (String ask : questions){
+                    question.setText(ask);
+
+                    System.out.println(ask);
+
+                    btOk.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            if(editableField.getText().toString().equalsIgnoreCase("batat")){
+                                System.out.println("Ok");
+                            }else{
+                                System.out.println("nOk");
+                            }
+
+                        }
+
+
+                    });
+
+                    System.out.println("conatdor " + i++);
+                }
+            }
+        });
 
     }
 
@@ -113,8 +155,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         Toast.makeText(MapsActivity.this, getText(R.string.sucessChangedName), Toast.LENGTH_SHORT).show();
                     }
                 });
-
-//                String[] batata = getResources().getStringArray(R.array.ass);
 
                 builder.create().show();
 

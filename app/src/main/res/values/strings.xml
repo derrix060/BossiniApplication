@@ -12,6 +12,40 @@
         <string name="btCancel">Cancelar</string>
         <string name="txtQuestion">Pergunta</string>
         <string name="txtAsnwer">Resposta</string>
+        <string name="txtOk">Ok</string>
+
+
+        <string-array name="questions">
+
+                <item name="1">Qual a capital da Argentina ?</item>
+                <item name="2">Qual a capital da Bolivia ?</item>
+                <item name="3">Qual a capital do Brasil ?</item>
+                <item name="4">Qual a capital da Inglaterra ?</item>
+                <item name="5">Qual a capital da Italia ?</item>
+                <item name="6">Qual a capital da Franca ?</item>
+                <item name="7">Qual a capital dos Estados Unidos ?</item>
+                <item name="8">Qual a capital do Chile ?</item>
+                <item name="9">Qual a capital do Mexico ?</item>
+                <item name="10">Qual a capital do Paraguai ?</item>
+
+        </string-array>
+
+
+    <string-array name="answers">
+
+        <item name="1">Buenos Aires</item>
+        <item name="2">Qual a capital da Bolivia ?</item>
+        <item name="3">Distrito federal</item>
+        <item name="4">Londres</item>
+        <item name="5">Qual a capital da Italia ?</item>
+        <item name="6">Qual a capital da Franca ?</item>
+        <item name="7">Qual a capital dos Estados Unidos ?</item>
+        <item name="8">Qual a capital do Chile ?</item>
+        <item name="9">Qual a capital do Mexico ?</item>
+        <item name="10">Qual a capital do Paraguai ?</item>
+
+    </string-array>
+    
 </resources>
 
 

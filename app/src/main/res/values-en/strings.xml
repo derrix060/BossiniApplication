@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="app_name">Bossini Application</string>
+        <string name="title_activity_maps">Map</string>
+        <string name="welcomeText">Welcome, </string>
+        <string name="sucessChangedName">Name changed</string>
+        <string name="btName">Change name</string>Tirar foto
+        <string name="btPicture">Take picture</string>
+        <string name="btStart">Start</string>
+        <string name="txtTypeName">Type your nname</string>
+        <string name="btChange">Change</string>
+        <string name="btCancel">Canvel</string>
+        <string name="txtQuestion">Ask</string>
+        <string name="txtAsnwer">Answer</string>
+        <string name="txtOk">Ok</string>
+
+</resources>
+
+
+
+
+
+
+
