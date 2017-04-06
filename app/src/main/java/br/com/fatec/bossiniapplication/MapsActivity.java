@@ -37,6 +37,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private TextView questionField;
     private TextView answerField;
+    private TextView pointsField;
+    private String pointsText;
 
     private int points;
 
@@ -63,7 +65,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         questionField = (TextView) findViewById(R.id.question);
         answerField =  (TextView) findViewById(R.id.answer);
-
+        pointsField = (TextView) findViewById(R.id.txtPoints);
+        pointsText = pointsField.getText().toString();
 
         for(int i=0; i< questions.length; i++){
             Challenge challenge = new Challenge(questions[i], answers[i]);

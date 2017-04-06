@@ -13,6 +13,7 @@
         <string name="txtQuestion">Pergunta</string>
         <string name="txtAsnwer">Resposta</string>
         <string name="txtOk">Ok</string>
+        <string name="txtPoints">"Points"</string>
 
 
         <string-array name="questions">

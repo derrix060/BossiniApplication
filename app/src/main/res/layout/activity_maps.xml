@@ -111,5 +111,13 @@
         android:layout_below="@+id/txtAnswer"
         android:layout_alignParentEnd="true" />
 
+    <TextView
+        android:id="@+id/txtPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtPoints"
+        android:layout_alignBottom="@+id/btStart"
+        android:layout_alignStart="@+id/btOk" />
+
 
 </RelativeLayout>
