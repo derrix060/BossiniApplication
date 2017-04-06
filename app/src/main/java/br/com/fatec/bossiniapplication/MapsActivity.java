@@ -21,17 +21,26 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
     private static final int CAMERA_REQUEST = 1;
     private ImageView imageView;
 
-    int i=0;
+    private List<Challenge> allChallenges = new ArrayList<>();
 
+    private int actualQuestionIndex = -1;
 
+    private TextView questionField;
+    private TextView answerField;
 
+    private int points = 0;
+
+    private int times = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         txtAnswer.setText(getString(R.string.txtAsnwer));
 
 
+        String questions [] = getResources().getStringArray(R.array.questions);
+        String answers [] = getResources().getStringArray(R.array.answers);
+
+        questionField = (TextView) findViewById(R.id.question);
+        answerField =  (TextView) findViewById(R.id.answer);
+
+
+        for(int i=0; i< questions.length; i++){
+            Challenge challenge = new Challenge(questions[i], answers[i]);
+            allChallenges.add(challenge);
+        }
+
+        Collections.shuffle(allChallenges);
+
         final EditText editableField = (EditText) findViewById(R.id.answer);
         editableField.setVisibility(View.INVISIBLE);
 
@@ -58,43 +81,54 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         final Button btOk = (Button) findViewById(R.id.btOk);
 
-        final String[] questions = getResources().getStringArray(R.array.questions);
-
         final Button btStart = (Button) findViewById(R.id.btStart);
 
         btStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                TextView question = (TextView) findViewById(R.id.question);
-
+                setChallengeOnView();
                 editableField.setVisibility(View.VISIBLE);
-
-                for (String ask : questions){
-                    question.setText(ask);
-
-                    System.out.println(ask);
-
-                    btOk.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                            if(editableField.getText().toString().equalsIgnoreCase("batat")){
-                                System.out.println("Ok");
-                            }else{
-                                System.out.println("nOk");
-                            }
-
-                        }
-
-
-                    });
-
-                    System.out.println("conatdor " + i++);
-                }
             }
         });
 
+        btOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Challenge actualChallenge = allChallenges.get(actualQuestionIndex);
+                if(actualChallenge.isRight(answerField.getText().toString())){
+                    points += 2;
+                    setChallengeOnView();
+                } else{
+                    points -= 1;
+                    times --;
+
+                    if(times == 0){
+                        setChallengeOnView();
+                    }
+                }
+
+                System.out.println("points - " + points);
+                System.out.println("Times - "+ times);
+
+            }
+
+
+
+        });
+
+    }
+
+    private Challenge getQuestion(){
+
+        return allChallenges.get(++actualQuestionIndex);
+    }
+
+    private void setChallengeOnView(){
+
+        Challenge challenge = getQuestion();
+
+        questionField.setText(challenge.getQuestion());
     }
 
     private void whenClickOnTakePicture() {
