@@ -33,14 +33,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private List<Challenge> allChallenges = new ArrayList<>();
 
-    private int actualQuestionIndex = -1;
+    private int actualQuestionIndex;
 
     private TextView questionField;
     private TextView answerField;
 
-    private int points = 0;
+    private int points;
 
-    private int times = 2;
+    private int times;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +86,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                actualQuestionIndex = -1;
+                points = 0;
+                times = 2;
+
                 setChallengeOnView();
                 editableField.setVisibility(View.VISIBLE);
             }
