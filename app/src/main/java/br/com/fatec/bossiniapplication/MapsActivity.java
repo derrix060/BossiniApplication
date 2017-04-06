@@ -56,7 +56,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         TextView txtQuestion = (TextView) findViewById(R.id.txtQuestion);
         txtQuestion.setText(getString(R.string.txtQuestion));
 
-        TextView txtAnswer = (TextView) findViewById(R.id.txtAnswer);
+        final TextView txtAnswer = (TextView) findViewById(R.id.txtAnswer);
         txtAnswer.setText(getString(R.string.txtAsnwer));
 
 
@@ -91,6 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 actualQuestionIndex = -1;
                 points = 0;
+                addPoint(0);
                 times = 2;
 
                 setChallengeOnView();
@@ -104,13 +105,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 Challenge actualChallenge = allChallenges.get(actualQuestionIndex);
                 if(actualChallenge.isRight(answerField.getText().toString())){
-                    points += 2;
+                    addPoint(2);
                     setChallengeOnView();
+                    txtAnswer.setText("");
                 } else{
-                    points -= 1;
+                    addPoint(-1);
                     times --;
 
                     if(times == 0){
+
+                        //reset times
+                        times = 2;
                         setChallengeOnView();
                     }
                 }
@@ -124,6 +129,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         });
 
+    }
+    
+    private void addPoint(int amount){
+        points += amount;
+
+        pointsField.setText(pointsText + ": " + points);
+        
     }
 
     private Challenge getQuestion(){
